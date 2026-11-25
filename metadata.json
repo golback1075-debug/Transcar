@@ -1,0 +1,6 @@
+{
+  "name": "TRANSCAR",
+  "description": "Système complet de gestion de location de voitures TRANSCAR — Agence de Blida, Algérie (Administration, Parc Automobile, Contrats, Caisse & Portail Client).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

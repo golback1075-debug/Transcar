@@ -1,0 +1,43 @@
+import * as dotenv from 'dotenv';
+import { defineConfig } from 'drizzle-kit';
+import firebaseConfig from '../../firebase-applet-config.json' with { type: 'json' };
+
+dotenv.config();
+
+const projectId = firebaseConfig.projectId;
+const sqlHost = process.env.SQL_HOST;
+const sqlDbName = process.env.SQL_DB_NAME;
+const user = process.env.SQL_ADMIN_USER;
+const password = process.env.SQL_ADMIN_PASSWORD;
+
+if (!sqlHost) {
+  throw new Error(`SQL_HOST must be set in environment variables (project: ${projectId}).`);
+}
+if (!sqlDbName) {
+  throw new Error(`SQL_DB_NAME must be set in environment variables (project: ${projectId}).`);
+}
+if (!user) {
+  throw new Error(`SQL_ADMIN_USER must be set in environment variables (project: ${projectId}).`);
+}
+if (!password) {
+  throw new Error(
+    `SQL_ADMIN_PASSWORD must be set in environment variables (project: ${projectId}).`,
+  );
+}
+
+export default defineConfig({
+  schema: './src/db/schema.ts',
+  out: './drizzle',
+  dialect: 'postgresql',
+  schemaFilter: ['public'],
+  dbCredentials: {
+    host: sqlHost,
+    port: 5432,
+    user,
+    password,
+    database: sqlDbName,
+    ssl: false,
+  },
+  verbose: true,
+  strict: true,
+});

@@ -1,0 +1,501 @@
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRANSCAR — Tableau de bord</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'brand-black': '#111114',
+        'on-brand-black': '#FFFFFF',
+        'success': '#15803D',
+        'on-success': '#FFFFFF',
+        'success-container': '#DCFCE7',
+        'on-success-container': '#14532D',
+        'warning': '#B45309',
+        'on-warning': '#FFFFFF',
+        'warning-container': '#FEF3C7',
+        'on-warning-container': '#78350F',
+        'light-primary': '#93000B',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#B91C1C',
+        'light-on-primary-container': '#FFCDC7',
+        'light-secondary': '#9F3F37',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#FF897D',
+        'light-on-secondary-container': '#76211C',
+        'light-tertiary': '#00497F',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#0061A6',
+        'light-on-tertiary-container': '#C1DBFF',
+        'light-error': '#BA1A1A',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000A',
+        'light-background': '#FBF8FC',
+        'light-on-background': '#1B1B1E',
+        'light-surface': '#FBF8FC',
+        'light-surface-dim': '#DCD9DD',
+        'light-surface-bright': '#FFFFFF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#F6F2F7',
+        'light-surface-container': '#F0EDF1',
+        'light-surface-container-high': '#EAE7EB',
+        'light-surface-container-highest': '#E4E1E6',
+        'light-on-surface': '#1B1B1E',
+        'light-surface-variant': '#FFDAD6',
+        'light-on-surface-variant': '#5B403D',
+        'light-outline': '#8F6F6C',
+        'light-outline-variant': '#E4BEB9',
+        'light-inverse-surface': '#303033',
+        'light-inverse-on-surface': '#F3F0F4',
+        'light-inverse-primary': '#FFB4AB',
+        'dark-primary': '#FFB4AB',
+        'dark-on-primary': '#690005',
+        'dark-primary-container': '#B91C1C',
+        'dark-on-primary-container': '#FFCDC7',
+        'dark-secondary': '#FFB4AB',
+        'dark-on-secondary': '#61110F',
+        'dark-secondary-container': '#802822',
+        'dark-on-secondary-container': '#FF9A8E',
+        'dark-tertiary': '#A0CAFF',
+        'dark-on-tertiary': '#003259',
+        'dark-tertiary-container': '#0061A6',
+        'dark-on-tertiary-container': '#C1DBFF',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000A',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#131316',
+        'dark-on-background': '#E4E1E6',
+        'dark-surface': '#131316',
+        'dark-surface-dim': '#131316',
+        'dark-surface-bright': '#39393C',
+        'dark-surface-container-lowest': '#0E0E11',
+        'dark-surface-container-low': '#1B1B1E',
+        'dark-surface-container': '#1F1F22',
+        'dark-surface-container-high': '#2A2A2D',
+        'dark-surface-container-highest': '#353438',
+        'dark-on-surface': '#E4E1E6',
+        'dark-surface-variant': '#5B403D',
+        'dark-on-surface-variant': '#E4BEB9',
+        'dark-outline': '#AB8985',
+        'dark-outline-variant': '#5B403D',
+        'dark-inverse-surface': '#E4E1E6',
+        'dark-inverse-on-surface': '#303033',
+        'dark-inverse-primary': '#B91C1C',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '10px',
+        'lg': '12px',
+        'xl': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '16px',
+        'gutter-lg': '24px',
+        'gutter-xl': '32px',
+        'section': '40px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Wix Madefor Display"', 'sans-serif'],
+        'headline': ['"Wix Madefor Display"', 'sans-serif'],
+        'title': ['"Instrument Sans"', 'sans-serif'],
+        'body': ['"Instrument Sans"', 'sans-serif'],
+        'label': ['"Instrument Sans"', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['40px', { lineHeight: '48px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['28px', { lineHeight: '36px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['22px', { lineHeight: '28px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['18px', { lineHeight: '24px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['15px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['13px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['13px', { lineHeight: '18px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-sm': ['11px', { lineHeight: '16px', letterSpacing: '0.3px', fontWeight: '600' }],
+        'mono-md': ['13px', { lineHeight: '18px', letterSpacing: '0.2px', fontWeight: '600' }],
+      },
+      transitionDuration: {
+        'state-change': '120ms',
+        'surface-enter': '200ms',
+        'surface-exit': '140ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@600;700&amp;family=Instrument+Sans:wght@400;500;600;700&amp;family=Source+Code+Pro:wght@600&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[1024px] flex" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+    <!-- Shared App Shell Sidebar -->
+    <aside class="w-64 shrink-0 min-h-[1024px] bg-brand-black text-on-brand-black flex flex-col justify-between border-r border-light-inverse-surface" data-stitch-vh="min-h-[1024px]===min-h-screen">
+      <div class="p-gutter-lg flex flex-col gap-gutter-lg">
+        <!-- Brand Mark -->
+        <div class="flex items-center gap-3 pb-gutter-md border-b border-light-inverse-surface">
+          <div class="w-9 h-9 rounded bg-light-primary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-[20px] text-light-on-primary" aria-hidden="true">directions_car</span>
+          </div>
+          <div>
+            <span class="font-headline text-title-md text-on-brand-black block" data-design-text-token="title-md">TRANSCAR</span>
+            <span class="font-label text-label-sm text-light-surface-dim block" data-design-text-token="label-sm">Blida · Gérant</span>
+          </div>
+        </div>
+
+        <!-- Primary Navigation -->
+        <nav aria-label="Navigation principale" class="flex flex-col gap-1">
+          <a href="#" aria-current="page" class="flex items-center gap-3 px-3 py-2.5 rounded bg-light-primary text-light-on-primary">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">dashboard</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Tableau de bord</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded text-light-surface-dim hover:bg-light-inverse-surface hover:text-on-brand-black transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">garage</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Parc Automobile</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded text-light-surface-dim hover:bg-light-inverse-surface hover:text-on-brand-black transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">event_available</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Réservations</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded text-light-surface-dim hover:bg-light-inverse-surface hover:text-on-brand-black transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">description</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Contrats de location</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded text-light-surface-dim hover:bg-light-inverse-surface hover:text-on-brand-black transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">group</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Clients</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded text-light-surface-dim hover:bg-light-inverse-surface hover:text-on-brand-black transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">assignment_return</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Retours véhicules</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded text-light-surface-dim hover:bg-light-inverse-surface hover:text-on-brand-black transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">build</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Maintenance</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded text-light-surface-dim hover:bg-light-inverse-surface hover:text-on-brand-black transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">point_of_sale</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Caisse &amp; Finances</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded text-light-surface-dim hover:bg-light-inverse-surface hover:text-on-brand-black transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">bar_chart</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Rapports financiers</span>
+          </a>
+          <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded text-light-surface-dim hover:bg-light-inverse-surface hover:text-on-brand-black transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[20px]" aria-hidden="true">gavel</span>
+            <span class="font-label text-label-lg" data-design-text-token="label-lg">Conditions de location</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Sync & Settings Footer -->
+      <div class="p-gutter-lg border-t border-light-inverse-surface flex flex-col gap-2">
+        <div class="flex items-center justify-between">
+          <span class="inline-flex items-center gap-1.5 font-label text-label-sm text-light-surface-dim" data-design-text-token="label-sm">
+            <span class="w-2 h-2 rounded-full bg-success"></span>
+            Synchronisé
+          </span>
+          <span class="font-mono text-label-sm text-light-surface-dim tabular-nums" data-design-text-token="label-sm">FR</span>
+        </div>
+        <button type="button" class="flex items-center gap-2 px-3 py-2 rounded text-light-surface-dim hover:bg-light-inverse-surface hover:text-on-brand-black transition-colors duration-state-change cursor-pointer">
+          <span class="material-symbols-outlined text-[18px]" aria-hidden="true">logout</span>
+          <span class="font-label text-label-lg" data-design-text-token="label-lg">Verrouiller session</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <div class="flex-1 flex flex-col min-w-0">
+      <!-- Shared Header -->
+      <header class="bg-light-surface-container-lowest border-b border-light-outline-variant px-gutter-lg py-gutter-md flex items-center justify-between gap-gutter-md sticky top-0 z-20">
+        <div>
+          <h1 class="font-headline text-headline-md text-light-on-surface" data-design-text-token="headline-md">Tableau de bord</h1>
+          <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Lundi 23 Novembre 2026 · Agence Blida</p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-light-surface-container text-light-on-surface font-label text-label-sm" data-design-text-token="label-sm">
+            <span class="material-symbols-outlined text-[16px] text-light-primary" aria-hidden="true">admin_panel_settings</span>
+            Mode Gérant (2026)
+          </span>
+          <!-- COMPONENT: button-icon -->
+          <button data-component-id="button-icon" data-component-type="button" data-component-variant="icon" type="button" aria-label="Centre de notifications" class="relative inline-flex items-center justify-center w-10 h-10 rounded bg-light-surface-container-lowest text-light-on-surface border border-light-outline-variant hover:bg-light-surface-container transition-colors duration-state-change cursor-pointer">
+            <span class="material-symbols-outlined text-[20px]">notifications</span>
+            <span class="absolute -top-1 -right-1 inline-flex items-center justify-center min-w-5 h-5 px-1 rounded-full bg-light-primary text-light-on-primary font-label text-label-sm tabular-nums" data-design-text-token="label-sm">4</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Dashboard Content -->
+      <main class="p-gutter-lg flex flex-col gap-gutter-lg">
+
+        <!-- Fleet & Operations KPIs -->
+        <section aria-labelledby="fleet-kpis-heading" class="flex flex-col gap-gutter-md">
+          <div class="flex items-center justify-between">
+            <h2 id="fleet-kpis-heading" class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">État du Parc &amp; Opérations du Jour</h2>
+            <span class="font-body text-body-md text-light-on-surface-variant tabular-nums" data-design-text-token="body-md">38 clients enregistrés · 8 contrats actifs</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-gutter-md items-stretch">
+            <!-- COMPONENT: card-elevated -->
+            <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="h-full bg-light-surface-container-lowest border border-light-outline-variant rounded-lg p-gutter-md flex flex-col justify-between gap-2">
+              <header class="flex items-center justify-between gap-2">
+                <span class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Total véhicules</span>
+                <span class="material-symbols-outlined text-[20px] text-light-on-surface" aria-hidden="true">directions_car</span>
+              </header>
+              <div>
+                <p class="font-headline text-headline-lg text-light-on-surface tabular-nums" data-design-text-token="headline-lg">22</p>
+                <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Parc complet</p>
+              </div>
+            </article>
+
+            <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="h-full bg-light-surface-container-lowest border border-light-outline-variant rounded-lg p-gutter-md flex flex-col justify-between gap-2">
+              <header class="flex items-center justify-between gap-2">
+                <span class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Disponibles</span>
+                <span class="material-symbols-outlined text-[20px] text-success" aria-hidden="true">check_circle</span>
+              </header>
+              <div>
+                <p class="font-headline text-headline-lg text-success tabular-nums" data-design-text-token="headline-lg">11</p>
+                <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Prêts à louer</p>
+              </div>
+            </article>
+
+            <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="h-full bg-light-surface-container-lowest border border-light-outline-variant rounded-lg p-gutter-md flex flex-col justify-between gap-2">
+              <header class="flex items-center justify-between gap-2">
+                <span class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Réservées</span>
+                <span class="material-symbols-outlined text-[20px] text-light-error" aria-hidden="true">event_busy</span>
+              </header>
+              <div>
+                <p class="font-headline text-headline-lg text-light-error tabular-nums" data-design-text-token="headline-lg">2</p>
+                <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Départs aujourd&#39;hui</p>
+              </div>
+            </article>
+
+            <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="h-full bg-light-surface-container-lowest border border-light-outline-variant rounded-lg p-gutter-md flex flex-col justify-between gap-2">
+              <header class="flex items-center justify-between gap-2">
+                <span class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">Louées</span>
+                <span class="material-symbols-outlined text-[20px] text-light-primary" aria-hidden="true">car_rental</span>
+              </header>
+              <div>
+                <p class="font-headline text-headline-lg text-light-primary tabular-nums" data-design-text-token="headline-lg">8</p>
+                <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">3 retours prévus</p>
+              </div>
+            </article>
+
+            <article data-component-id="card-elevated" data-component-type="card" data-component-variant="elevated" class="h-full bg-light-surface-container-lowest border border-light-outline-variant rounded-lg p-gutter-md flex flex-col justify-between gap-2">
+              <header class="flex items-center justify-between gap-2">
+                <span class="font-label text-label-sm text-light-on-surface-variant" data-design-text-token="label-sm">En maintenance</span>
+                <span class="material-symbols-outlined text-[20px] text-warning" aria-hidden="true">build_circle</span>
+              </header>
+              <div>
+                <p class="font-headline text-headline-lg text-light-error tabular-nums" data-design-text-token="headline-lg">1</p>
+                <p class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">Indisponible</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Manager-Only Financial Overview -->
+        <section aria-labelledby="finance-kpis-heading" class="bg-brand-black text-on-brand-black rounded-xl p-gutter-lg flex flex-col gap-gutter-md">
+          <div class="flex items-center justify-between gap-gutter-md">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[20px] text-light-primary-container" aria-hidden="true">lock</span>
+              <h2 id="finance-kpis-heading" class="font-title text-title-lg text-on-brand-black" data-design-text-token="title-lg">Finances &amp; Caisse — Accès Gérant Uniquement</h2>
+            </div>
+            <span class="font-label text-label-sm text-light-surface-dim" data-design-text-token="label-sm">Novembre 2026</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-gutter-md">
+            <div class="p-gutter-md rounded-lg bg-light-inverse-surface flex flex-col gap-1">
+              <span class="font-label text-label-sm text-light-surface-dim" data-design-text-token="label-sm">Revenu du jour</span>
+              <span class="font-headline text-title-lg text-on-brand-black tabular-nums" data-design-text-token="title-lg">54 500 DZD</span>
+            </div>
+            <div class="p-gutter-md rounded-lg bg-light-inverse-surface flex flex-col gap-1">
+              <span class="font-label text-label-sm text-light-surface-dim" data-design-text-token="label-sm">Revenu mensuel</span>
+              <span class="font-headline text-title-lg text-on-brand-black tabular-nums" data-design-text-token="title-lg">1 284 000 DZD</span>
+            </div>
+            <div class="p-gutter-md rounded-lg bg-light-inverse-surface flex flex-col gap-1">
+              <span class="font-label text-label-sm text-light-surface-dim" data-design-text-token="label-sm">Dépenses</span>
+              <span class="font-headline text-title-lg text-light-on-primary-container tabular-nums" data-design-text-token="title-lg">196 500 DZD</span>
+            </div>
+            <div class="p-gutter-md rounded-lg bg-light-inverse-surface flex flex-col gap-1">
+              <span class="font-label text-label-sm text-light-surface-dim" data-design-text-token="label-sm">Bénéfice net</span>
+              <span class="font-headline text-title-lg text-on-brand-black tabular-nums" data-design-text-token="title-lg">1 087 500 DZD</span>
+            </div>
+            <div class="p-gutter-md rounded-lg bg-light-primary flex flex-col gap-1">
+              <span class="font-label text-label-sm text-light-on-primary-container" data-design-text-token="label-sm">Solde en caisse</span>
+              <span class="font-headline text-title-lg text-light-on-primary tabular-nums" data-design-text-token="title-lg">412 000 DZD</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Two-Column Operational Split: Alerts + Today's Returns -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter-lg items-start">
+
+          <!-- Alerts: Documents (7-day) & Maintenance Mileage -->
+          <section class="lg:col-span-5 bg-light-surface-container-lowest border border-light-outline-variant rounded-lg p-gutter-lg flex flex-col gap-gutter-md">
+            <header class="flex items-center justify-between gap-2">
+              <h2 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">Alertes actives</h2>
+              <span class="shrink-0 inline-flex items-center px-2.5 py-0.5 rounded-full bg-light-error-container text-light-on-error-container font-label text-label-sm tabular-nums" data-design-text-token="label-sm">4 actives</span>
+            </header>
+
+            <div class="flex flex-col gap-gutter-sm">
+              <div class="p-3 rounded-lg bg-light-error-container border border-light-outline-variant flex items-start justify-between gap-3">
+                <div class="flex items-start gap-2.5 min-w-0">
+                  <span class="material-symbols-outlined text-[20px] text-light-error mt-0.5 shrink-0" aria-hidden="true">error</span>
+                  <div class="min-w-0">
+                    <span class="font-label text-label-lg text-light-on-error-container block" data-design-text-token="label-lg">Assurance · 03120-122-09</span>
+                    <span class="font-body text-body-md text-light-on-error-container" data-design-text-token="body-md">Hyundai Tucson · Expirée le 20/11/2026</span>
+                  </div>
+                </div>
+                <span class="shrink-0 font-label text-label-sm text-light-on-error-container" data-design-text-token="label-sm">Urgent</span>
+              </div>
+
+              <div class="p-3 rounded-lg bg-warning-container border border-light-outline-variant flex items-start justify-between gap-3">
+                <div class="flex items-start gap-2.5 min-w-0">
+                  <span class="material-symbols-outlined text-[20px] text-warning mt-0.5 shrink-0" aria-hidden="true">schedule</span>
+                  <div class="min-w-0">
+                    <span class="font-label text-label-lg text-on-warning-container block" data-design-text-token="label-lg">Contrôle · 04582-119-09</span>
+                    <span class="font-body text-body-md text-on-warning-container" data-design-text-token="body-md">Renault Clio 5 · Expire le 28/11/2026</span>
+                  </div>
+                </div>
+                <span class="shrink-0 font-label text-label-sm text-on-warning-container" data-design-text-token="label-sm">7 jours</span>
+              </div>
+
+              <div class="p-3 rounded-lg bg-warning-container border border-light-outline-variant flex items-start justify-between gap-3">
+                <div class="flex items-start gap-2.5 min-w-0">
+                  <span class="material-symbols-outlined text-[20px] text-warning mt-0.5 shrink-0" aria-hidden="true">oil_barrel</span>
+                  <div class="min-w-0">
+                    <span class="font-label text-label-lg text-on-warning-container block" data-design-text-token="label-lg">Graissage · 08914-123-09</span>
+                    <span class="font-body text-body-md text-on-warning-container" data-design-text-token="body-md">VW Golf 8 · 39 750 / 40 000 km</span>
+                  </div>
+                </div>
+                <span class="shrink-0 font-label text-label-sm text-on-warning-container tabular-nums" data-design-text-token="label-sm">250 km</span>
+              </div>
+
+              <div class="p-3 rounded-lg bg-light-surface-container-low border border-light-outline-variant flex items-start justify-between gap-3">
+                <div class="flex items-start gap-2.5 min-w-0">
+                  <span class="material-symbols-outlined text-[20px] text-light-primary mt-0.5 shrink-0" aria-hidden="true">engineering</span>
+                  <div class="min-w-0">
+                    <span class="font-label text-label-lg text-light-on-surface block" data-design-text-token="label-lg">Kit chaîne · 01945-121-09</span>
+                    <span class="font-body text-body-md text-light-on-surface-variant" data-design-text-token="body-md">VW Polo · En atelier (50 000 km)</span>
+                  </div>
+                </div>
+                <span class="shrink-0 font-label text-label-sm text-light-error" data-design-text-token="label-sm">En cours</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Today's Returns & Active Contracts Table -->
+          <section class="lg:col-span-7 flex flex-col gap-gutter-sm">
+            <div class="flex items-center justify-between">
+              <h2 class="font-title text-title-lg text-light-on-surface" data-design-text-token="title-lg">Retours &amp; Réservations du Jour</h2>
+              <button type="button" class="font-label text-label-lg text-light-primary hover:underline cursor-pointer" data-design-text-token="label-lg">Voir tous les contrats</button>
+            </div>
+
+            <!-- COMPONENT: table-standard -->
+            <div data-component-id="table-standard" data-component-type="table" data-component-variant="standard" class="bg-light-surface-container-lowest border border-light-outline-variant rounded-lg overflow-hidden">
+              <table class="w-full text-left border-collapse">
+                <thead class="bg-light-surface-container-low border-b border-light-outline-variant">
+                  <tr>
+                    <th scope="col" class="px-gutter-md py-3 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                      <span data-design-text-token="label-sm">Client</span>
+                    </th>
+                    <th scope="col" class="px-gutter-md py-3 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                      <span data-design-text-token="label-sm">Véhicule</span>
+                    </th>
+                    <th scope="col" class="px-gutter-md py-3 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider">
+                      <span data-design-text-token="label-sm">Échéance</span>
+                    </th>
+                    <th scope="col" class="px-gutter-md py-3 font-label text-label-sm text-light-on-surface-variant uppercase tracking-wider text-right">
+                      <span data-design-text-token="label-sm">Statut</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-light-outline-variant">
+                  <tr class="hover:bg-light-surface-container-low transition-colors duration-state-change">
+                    <td class="px-gutter-md py-3.5">
+                      <span class="font-title text-title-md text-light-on-surface block" data-design-text-token="title-md">Karim Benali</span>
+                      <span class="font-body text-body-md text-light-on-surface-variant tabular-nums" data-design-text-token="body-md">0551 42 89 10</span>
+                    </td>
+                    <td class="px-gutter-md py-3.5">
+                      <span class="font-body text-body-md text-light-on-surface block" data-design-text-token="body-md">VW Golf 8</span>
+                      <span class="font-mono text-mono-md text-light-on-surface-variant tabular-nums" data-design-text-token="mono-md">08914-123-09</span>
+                    </td>
+                    <td class="px-gutter-md py-3.5">
+                      <span class="font-body text-body-md text-light-on-surface tabular-nums" data-design-text-token="body-md">23/11 · 17:00</span>
+                    </td>
+                    <td class="px-gutter-md py-3.5 text-right">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-warning-container text-on-warning-container font-label text-label-sm" data-design-text-token="label-sm">Retour prévu</span>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-light-surface-container-low transition-colors duration-state-change">
+                    <td class="px-gutter-md py-3.5">
+                      <span class="font-title text-title-md text-light-on-surface block" data-design-text-token="title-md">Yasmine Boudiaf</span>
+                      <span class="font-body text-body-md text-light-on-surface-variant tabular-nums" data-design-text-token="body-md">0662 19 34 05</span>
+                    </td>
+                    <td class="px-gutter-md py-3.5">
+                      <span class="font-body text-body-md text-light-on-surface block" data-design-text-token="body-md">Hyundai Tucson</span>
+                      <span class="font-mono text-mono-md text-light-on-surface-variant tabular-nums" data-design-text-token="mono-md">03120-122-09</span>
+                    </td>
+                    <td class="px-gutter-md py-3.5">
+                      <span class="font-body text-body-md text-light-on-surface tabular-nums" data-design-text-token="body-md">25/11 - 30/11</span>
+                    </td>
+                    <td class="px-gutter-md py-3.5 text-right">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-light-error-container text-light-on-error-container font-label text-label-sm" data-design-text-token="label-sm">Réservée</span>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-light-surface-container-low transition-colors duration-state-change">
+                    <td class="px-gutter-md py-3.5">
+                      <span class="font-title text-title-md text-light-on-surface block" data-design-text-token="title-md">Sofiane Mansouri</span>
+                      <span class="font-body text-body-md text-light-on-surface-variant tabular-nums" data-design-text-token="body-md">0770 88 12 44</span>
+                    </td>
+                    <td class="px-gutter-md py-3.5">
+                      <span class="font-body text-body-md text-light-on-surface block" data-design-text-token="body-md">Dacia Stepway</span>
+                      <span class="font-mono text-mono-md text-light-on-surface-variant tabular-nums" data-design-text-token="mono-md">07419-124-09</span>
+                    </td>
+                    <td class="px-gutter-md py-3.5">
+                      <span class="font-body text-body-md text-light-error tabular-nums" data-design-text-token="body-md">22/11 · Retard</span>
+                    </td>
+                    <td class="px-gutter-md py-3.5 text-right">
+                      <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-light-error-container text-light-on-error-container font-label text-label-sm" data-design-text-token="label-sm">En retard</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+
+  </div>
+
+
+</body></html>

@@ -1,0 +1,1241 @@
+# TRANSCAR – COMPLETE WINDOWS DESKTOP APPLICATION
+## MASTER DEVELOPMENT PROMPT – FINAL VERSION
+
+**Project:** TRANSCAR – Car Rental Management System  
+**Location:** Blida, Algeria  
+**Application:** Windows Desktop + Customer Booking Website  
+**Target OS:** Windows 10 / Windows 11  
+**Default Language:** French  
+**Supported Languages:** Arabic, French, English
+
+---
+
+# 1. PROJECT OVERVIEW
+
+Build a complete, professional, production-ready car rental management system called **TRANSCAR** for a car rental agency located in Blida, Algeria.
+
+The project must include:
+
+1. A complete Windows desktop administration application.
+2. A separate customer-facing car booking website.
+3. A centralized production database.
+4. Secure cloud document and image storage.
+5. Complete rental management.
+6. Vehicle and customer management.
+7. Official rental contract generation.
+8. Official rental conditions management.
+9. Financial management and cash register.
+10. Maintenance and document expiry monitoring.
+11. Automatic notifications.
+12. Multi-computer synchronization.
+13. A real Windows installer named `TRANSCAR-Setup.exe`.
+
+This is a complete business application, not a prototype.
+
+**IMPORTANT:** If existing TRANSCAR source code is supplied, inspect and extend the existing project instead of creating an unrelated replacement. Preserve existing functionality, data, architecture and working integrations wherever possible.
+
+Do not remove working features without explicit authorization.
+
+# 2. PROVIDED INTERFACES – DESIGN REFERENCE
+
+The project owner will provide ready-made application interfaces.
+
+These interfaces must be treated as the official visual reference for TRANSCAR.
+
+Requirements:
+
+- Use the supplied interfaces as the foundation of the application.
+- Preserve the original layouts, colors, typography, spacing, icons and component positions.
+- Do not redesign the interfaces from scratch.
+- Do not replace the provided design with generic dashboard templates.
+- Connect every interface to real backend functionality and the central database.
+- Make every button, form, menu, table and action functional.
+- Preserve the original visual identity while adapting it to Arabic RTL, French LTR and English LTR.
+- Maintain consistency across all screens.
+- Make the interfaces responsive to different Windows screen sizes.
+
+The supplied interfaces are not decorative mockups. They must become the actual working application.
+
+# 3. TECHNOLOGY AND ARCHITECTURE
+
+Use a reliable production architecture.
+
+Recommended technologies:
+
+- Electron for the Windows desktop application.
+- React and TypeScript for the frontend.
+- Next.js for the customer booking website, or extend the existing TRANSCAR web application.
+- Node.js backend with a secure REST API.
+- PostgreSQL as the centralized production database.
+- Prisma or an equivalent database ORM.
+- Secure cloud storage for photographs and documents.
+- Electron Builder for Windows packaging.
+
+Architecture requirements:
+
+- One centralized database shared by all computers and the booking website.
+- No independent production database for each computer.
+- Secure backend API for all business operations.
+- Server-side validation.
+- Real authentication and authorization.
+- Database migrations.
+- Automatic backups.
+- File storage independent of the application installation directory.
+- Automatic synchronization.
+- Proper error handling and logging.
+
+Never expose database credentials, storage secrets or administrative API keys inside the frontend or Electron renderer.
+
+# 4. BRAND IDENTITY AND DESIGN
+
+Application name: TRANSCAR.
+
+Company location: Blida, Algeria.
+
+Official colors:
+
+- Red.
+- Black.
+- White.
+
+Create a professional automotive visual identity.
+
+Maintain:
+
+- Professional dashboard.
+- Modern vehicle cards.
+- Elegant icons.
+- Clear navigation.
+- Professional tables.
+- Clean forms.
+- Statistics.
+- Consistent typography.
+- Easy-to-use interfaces.
+
+Use the provided interfaces as the primary design source.
+
+# 5. MULTI-LANGUAGE SYSTEM
+
+Implement complete support for:
+
+- Arabic – العربية.
+- French – Français.
+- English – English.
+
+Display language selectors:
+
+- 🇩🇿 العربية
+- 🇫🇷 Français
+- 🇬🇧 English
+
+Requirements:
+
+**Arabic**
+- Complete RTL interface.
+- Correct alignment and direction.
+- Appropriate Arabic fonts.
+- Correct Arabic PDF generation.
+- Proper Arabic text rendering.
+
+**French**
+- Complete LTR interface.
+- Professional French automotive terminology.
+
+**English**
+- Complete LTR interface.
+
+Translate every:
+
+- Screen.
+- Button.
+- Menu.
+- Form.
+- Notification.
+- Error message.
+- Report.
+- Dashboard.
+- Customer website page.
+
+Use a proper internationalization system.
+
+Do not use automatic browser translation.
+
+Remember the selected language after restarting the application.
+
+Allow customers to independently select their language.
+
+Default language on first installation: French.
+
+# 6. LOGIN AND ACCESS PERMISSIONS
+
+Create a login screen with two shared access passwords and no username field.
+
+**MANAGER**
+
+Initial password: `2026`
+
+Full access to all application features.
+
+**EMPLOYEES**
+
+Initial password: `0000`
+
+Access to normal daily operations.
+
+Employees can access:
+
+- Vehicles.
+- Customers.
+- Reservations.
+- Rental contracts.
+- Vehicle returns.
+- Maintenance.
+- Operational documents.
+- Operational notifications.
+
+Employees cannot access:
+
+- Cash register.
+- Financial dashboard.
+- Revenue.
+- Expenses.
+- Profits.
+- Financial reports.
+- Financial settings.
+
+Security requirements:
+
+- Implement real backend authorization.
+- Do not rely on hiding buttons.
+- Enforce permissions on every protected API endpoint.
+- Store passwords using secure password hashing.
+- Never store plaintext passwords.
+- Allow the manager to change access credentials.
+- Provide secure session management.
+- Protect administrative actions.
+- Log important operations.
+
+The initial access credentials must be initialized securely and must never be exposed in frontend source code.
+
+# 7. INITIAL DATABASE STATE – ZERO DATA
+
+**CRITICAL REQUIREMENT: The first installation must start with completely empty business data.**
+
+When TRANSCAR is installed and opened for the first time, the application must be clean and ready for real agency information.
+
+Do not insert demo data, sample vehicles, fake customers or fictional transactions.
+
+Initial values:
+
+| Information | Initial value |
+|---|---:|
+| Total vehicles | 0 |
+| Available vehicles | 0 |
+| Reserved vehicles | 0 |
+| Rented vehicles | 0 |
+| Vehicles under maintenance | 0 |
+| Customers | 0 |
+| Reservations | 0 |
+| Rental contracts | 0 |
+| Active rentals | 0 |
+| Revenue | 0 DZD |
+| Expenses | 0 DZD |
+| Profits | 0 DZD |
+| Cash balance | 0 DZD |
+| Maintenance records | 0 |
+| Business notifications | 0 |
+
+Requirements:
+
+- All business tables must start empty.
+- Dashboard statistics must display actual database values.
+- All financial indicators must start at zero.
+- All counters must update automatically.
+- New records must be permanently saved.
+- Data must remain available after restarting Windows.
+- Do not use temporary or mock storage.
+- Only necessary system configuration and initial access credentials may be initialized automatically.
+
+Never create fictional business activity to make the dashboard look populated.
+
+# 8. DATABASE DEVELOPMENT – CREATE THE COMPLETE DATABASE
+
+The developer must actually create and configure the complete database, not simply describe its structure.
+
+Create the database architecture, tables, relationships, constraints and indexes.
+
+Required database entities include:
+
+- Users and access roles.
+- Vehicles.
+- Vehicle photographs.
+- Customers.
+- Customer identification documents.
+- Driving licences.
+- Reservations.
+- Rental contracts.
+- Rental conditions and versions.
+- Vehicle documents.
+- Document expiry records.
+- Maintenance records.
+- Maintenance reminders.
+- Rental payments.
+- Deposits.
+- Expenses.
+- Refunds.
+- Vehicle returns.
+- Damage records.
+- Notifications.
+- Audit logs.
+- System settings.
+- Synchronization records.
+
+Database requirements:
+
+- Proper primary keys and foreign keys.
+- Unique vehicle registration numbers.
+- Valid relationships between customers, vehicles and rentals.
+- Database transactions for important operations.
+- Prevention of overlapping reservations.
+- Prevention of duplicate records.
+- Automatic timestamps.
+- Data integrity.
+- Migration scripts.
+- Initialization scripts.
+- Backup and recovery tools.
+- Database documentation.
+
+All application screens must read and write real database records.
+
+The database must be deployed centrally and securely.
+
+# 9. ADMINISTRATION DASHBOARD
+
+Create a central dashboard displaying:
+
+- Total vehicles.
+- Available vehicles.
+- Reserved vehicles.
+- Rented vehicles.
+- Vehicles under maintenance.
+- Total customers.
+- Active rental contracts.
+- Today's reservations.
+- Today's returns.
+- Upcoming returns.
+- Maintenance alerts.
+- Document expiry alerts.
+
+Manager-only statistics:
+
+- Daily revenue.
+- Monthly revenue.
+- Expenses.
+- Net profits.
+- Cash balance.
+
+All statistics must be calculated from actual database transactions.
+
+# 10. VEHICLE MANAGEMENT – PARC AUTOMOBILE
+
+Add an `Ajouter une voiture` button.
+
+Each vehicle must contain:
+
+- Brand.
+- Model.
+- Year.
+- Color.
+- Immatriculation.
+- Daily rental price.
+- Current mileage.
+- Vehicle photograph.
+
+Mandatory fields:
+
+- Vehicle photograph.
+- Registration number.
+
+Rules:
+
+- Cannot save a vehicle without a photograph.
+- Cannot save without a registration number.
+- Registration numbers must be unique.
+- Automatically add new vehicles to Parc Automobile.
+- Display vehicle photograph.
+- Display registration number.
+- Display current status.
+- Allow authorized users to edit vehicle information.
+- Allow replacing photographs.
+- Maintain vehicle history.
+
+All information must be saved in the central database.
+
+# 11. VEHICLE AVAILABILITY AND RESERVATIONS
+
+Vehicle statuses:
+
+- Disponible – Green.
+- Réservée – Red.
+- Louée – Red.
+- En maintenance – Red.
+
+Rules:
+
+- Automatically mark vehicles as reserved during confirmed reservation periods.
+- Display reservation start and end dates.
+- Mark vehicles as rented when rental begins.
+- Mark vehicles as under maintenance when maintenance begins.
+- Never allow unavailable vehicles to be rented.
+- Automatically update availability after return.
+- Implement date-based availability checking.
+- Prevent overlapping reservations and rental contracts.
+
+Example:
+
+A vehicle reserved from 25 November to 30 November must remain unavailable during the reservation period but may be rented for non-overlapping dates.
+
+The system must check availability on the backend, not just the frontend.
+
+Use proper database transactions or equivalent concurrency protection to prevent double bookings.
+
+# 12. CUSTOMER MANAGEMENT – CLIENTS
+
+Create complete customer profiles.
+
+Information:
+
+- Full name.
+- Date of birth.
+- Phone number.
+- Address.
+- Email.
+- Identification information.
+- Driving licence.
+- Rental history.
+
+Add a dedicated `Permis de conduire` button.
+
+Allow uploading:
+
+- Front side of driving licence.
+- Back side of driving licence.
+
+Supported formats:
+
+- PDF.
+- JPG.
+- JPEG.
+- PNG.
+
+Requirements:
+
+- Save documents under the correct customer profile.
+- Allow authorized employees and manager to view documents.
+- Allow updating documents.
+- Make driving licence documents accessible during rental contract preparation.
+- Protect personal documents from unauthorized access.
+
+# 13. CUSTOMER BOOKING WEBSITE
+
+Create a separate customer-facing booking website connected to the same central database.
+
+Customers must be able to:
+
+- Browse available vehicles.
+- View vehicle photographs.
+- View specifications.
+- View daily rental prices.
+- Select rental dates.
+- Check availability.
+- Submit reservations.
+- Enter personal information.
+- Upload driving licence.
+- Read rental conditions.
+- Accept rental conditions.
+
+Requirements:
+
+- Display only vehicles available for the selected period.
+- Prevent double bookings.
+- Support Arabic, French and English.
+- Synchronize reservations with the administration application.
+- Save all reservation information in the central database.
+- Notify the administration when a new reservation is submitted.
+
+The website must not expose private customer information or internal financial records.
+
+# 14. OFFICIAL RENTAL CONTRACT – CONTRAT DE LOCATION
+
+Use the exact official rental contract supplied by the agency owner.
+
+**CRITICAL: Do not invent, redesign or replace the official contract.**
+
+The owner will provide the original contract template.
+
+Requirements:
+
+- Preserve the original layout.
+- Preserve the original wording.
+- Preserve the original colors.
+- Preserve the original logo and stamps.
+- Preserve the original fields and structure.
+- Do not delete or rewrite legal clauses.
+- Do not create a generic replacement contract.
+
+Automatically fill:
+
+- Customer information.
+- Customer identification information.
+- Driving licence information.
+- Vehicle information.
+- Registration number.
+- Rental start date.
+- Rental end date.
+- Rental duration.
+- Daily rental price.
+- Total amount.
+- Deposit.
+- Payment information.
+
+Generate printable PDF contracts.
+
+Allow:
+
+- Printing.
+- Downloading.
+- Saving.
+- Reopening.
+- Viewing historical contracts.
+
+Save each contract under the correct customer and vehicle profiles.
+
+Never modify previously issued contracts silently.
+
+If the official template has not yet been supplied, prepare the contract-generation integration but do not invent a substitute. Final exact-layout validation must wait for the owner's original document.
+
+# 15. OFFICIAL RENTAL CONDITIONS – CONDITIONS DE LOCATION
+
+The official Arabic rental conditions supplied by the owner are mandatory.
+
+Use the following original text as the authoritative Arabic version.
+
+## TRANS CAR
+### الشروط العامة لعقد كراء السيارات
+
+تُطبّق الشروط التالية على المستأجر طوال مدة الكراء، وفقًا للتشريع الجزائري المعمول به.
+
+**المادة 01 – مدة الكراء والتأخر:**
+
+تُحدد مدة الكراء وموعد الإرجاع في الشروط الخاصة. تُمنح مهلة سماح قدرها 3 ساعات؛ إذا تجاوز التأخر 3 ساعات ولم يتجاوز 6 ساعات، يُحتسب نصف يوم إضافي، وإذا تجاوز 6 ساعات، يُحتسب يوم كراء كامل إضافي. كل تمديد يتطلب موافقة مسبقة من الوكالة والاتفاق على التكلفة.
+
+**المادة 02 – المسافة:**
+
+المسافة المسموحة 350 كلم لكل 24 ساعة، وكل كيلومتر إضافي يُحتسب بـ50 دج.
+
+**المادة 03 – شروط استعمال السيارة:**
+
+يلتزم المستأجر بالمحافظة على السيارة واحترام قانون المرور. يُمنع منعًا باتًا تسليم السيارة أو تأجيرها للغير، أو السماح بقيادتها من شخص غير مصرّح به في العقد، أو استعمالها كسيارة أجرة أو للنقل بمقابل، بما في ذلك تطبيقات النقل وما شابهها. كما يُمنع منعًا باتًا إخراج السيارة من التراب الوطني الجزائري تحت أي ظرف، أو استعمالها في السباقات أو الأنشطة غير القانونية، أو السياقة المتهورة أو تحت تأثير الكحول أو المخدرات.
+
+**المادة 04 – الأعطال:**
+
+عند حدوث عطل خطير، يجب التوقف في مكان آمن وإبلاغ الوكالة فورًا، وعدم مواصلة السير إذا كان ذلك يفاقم الضرر أو يعرّض الأشخاص للخطر. لا يجوز إجراء إصلاحات على نفقة الوكالة دون موافقتها المسبقة، إلا لضرورة استعجالية مع إعلامها.
+
+**المادة 05 – الحوادث والأضرار:**
+
+يجب إبلاغ الوكالة فورًا عند وقوع حادث أو سرقة، واتخاذ الإجراءات القانونية اللازمة، والاتصال بالشرطة أو الدرك عند الاقتضاء. يلتزم المستأجر بتقديم وثائق الحادث ومعلوماته في أجل أقصاه 24 ساعة، مع مراعاة الآجال القانونية والتأمينية. وتشمل الوثائق، عند الاقتضاء، نسخة من البطاقة الرمادية للسيارة الأخرى، وشهادة تأمينها، ورخصة سياقة السائق الآخر، ورقم هاتفه أو رقم هاتف مالك السيارة، ومعلومات المعاينة الودية أو محضر الحادث. إذا وقع حادث غير متعمد ولم تثبت مسؤولية المستأجر عنه، تتحمل الوكالة تكاليف إصلاح سيارتها، مع مراعاة القانون وحقوقها تجاه المسؤول عن الحادث. أما الأضرار الناتجة عن خطأ المستأجر أو إهماله أو سوء استعماله أو مخالفته للعقد، فيتحمل تكاليفها المثبتة في حدود القانون. ويتحمل كذلك الأضرار الإضافية الناتجة عن عدم الإبلاغ أو تفاقم الضرر متى ثبتت مسؤوليته عنها.
+
+**المادة 06 – التجهيزات:**
+
+يلتزم المستأجر بالمحافظة على جميع التجهيزات المذكورة في محضر التسليم الموجود في الجهة الثانية من العقد، بما فيها المفتاح، والعجلة الاحتياطية، والرافعة ومقبضها، والإطارات والجنوط وأغطية العجلات، ومطفأة الحريق، ومثلث التحذير، وسترة السلامة، والمقاعد وأغطيتها، والرف الخلفي والتجهيزات الداخلية. ويتحمل تكاليف الإصلاح أو الاستبدال الفعلية والمثبتة للتجهيزات المفقودة أو المتضررة بسبب يُنسب إليه، باستثناء الاستهلاك العادي.
+
+**المادة 07 – الوقود والنظافة:**
+
+تُعاد السيارة بمستوى الوقود نفسه عند التسليم. يتحمل المستأجر تكلفة الوقود الناقص وتكاليف التنظيف الإضافية الفعلية والمثبتة عند الاتساخ الاستثنائي.
+
+**المادة 08 – المخالفات المرورية:**
+
+يتحمل المستأجر مسؤولية جميع المخالفات المرورية والغرامات الناتجة عن استعمال السيارة خلال مدة الكراء، بما فيها المخالفات المسجلة بواسطة الرادارات، ويلتزم بالتعاون مع الوكالة لتحديد السائق المسؤول إذا وصلت المخالفات بعد انتهاء الكراء، وفقًا للقانون.
+
+**المادة 09 – الاستعمال غير القانوني:**
+
+يُمنع منعًا باتًا استعمال السيارة في أي نشاط غير قانوني، أو نقل مواد أو بضائع ممنوعة، أو التهريب، أو ممارسة تجارة غير مرخصة، أو أي غرض مخالف للقانون أو لشروط العقد. ويتحمل المستأجر المسؤولية القانونية الكاملة أمام الجهات المختصة، كما يتحمل تكاليف جميع الأضرار والخسائر المثبتة التي تلحق بالوكالة نتيجة هذه المخالفات، وفقًا للقانون.
+
+**المادة 10 – تمديد العقد والإخلال بالشروط:**
+
+يتطلب تمديد الكراء موافقة الوكالة مسبقًا والاتفاق على المدة والتكلفة. ويجب على المستأجر الحضور إلى الوكالة لإتمام التمديد، إلا في حالة بُعد المسافة أو وجود ظرف طارئ يمنع حضوره، حيث يُرسل العقد عبر واتساب أو البريد الإلكتروني، ويلتزم المستأجر بتأكيد استلامه بالرد بكلمة "استلمت" «REÇU». ويتحمّل المستأجر المسؤوليات والتكاليف المثبتة الناتجة عن إخلاله بشروط العقد، في حدود ما يسمح به القانون.
+
+### Conditions implementation
+
+The application must:
+
+- Display all ten articles without removing any.
+- Preserve the Arabic original.
+- Provide professionally translated French and English versions.
+- Allow printing and PDF export.
+- Display the conditions on the customer booking website.
+- Require customer acceptance before confirming a reservation.
+- Record the accepted version, acceptance date and time, and reservation reference.
+- Preserve historical versions.
+- Allow the manager to update conditions.
+- Never silently replace conditions already accepted by customers.
+- Associate the applicable conditions with the generated rental contract.
+
+The owner-provided Arabic text remains the authoritative source. Do not independently invent additional legal clauses or penalties.
+
+# 16. RENTAL CONDITIONS MANAGEMENT
+
+Create a dedicated `Conditions de location` section.
+
+Allow the manager and authorized employees to manage conditions according to permissions.
+
+Requirements:
+
+- Arabic, French and English versions.
+- Version history.
+- Printing.
+- PDF export.
+- Automatic publication to the booking website.
+- Customer acceptance.
+- Record of the exact accepted version.
+- Preserve historical records.
+
+Do not hardcode conditions in the application source code.
+
+Store them in the database.
+
+# 17. VEHICLE DOCUMENTS – DOCUMENTS
+
+Inside every vehicle profile, add a dedicated `Documents` button.
+
+Allow uploading:
+
+- Assurance.
+- Contrôle technique.
+- Carte grise.
+- Vignette.
+- Other documents.
+
+Support PDF and image files.
+
+For each document store:
+
+- Document name.
+- Document type.
+- Issue date.
+- Expiry date.
+- Upload date.
+- File reference.
+- Renewal history.
+
+Requirements:
+
+- Save documents under the correct vehicle.
+- Display expiry dates.
+- Allow viewing.
+- Allow replacing.
+- Allow deleting according to permissions.
+- Manager has full access.
+- Employees can access documents needed for daily operations.
+
+Do not lose historical records when a document is renewed.
+
+# 18. AUTOMATIC VEHICLE DOCUMENT EXPIRY NOTIFICATIONS
+
+**IMPORTANT: Every vehicle document with an expiry date must be monitored automatically.**
+
+Monitor:
+
+- Assurance.
+- Contrôle technique.
+- Carte grise.
+- Vignette.
+- Other documents with an expiry date.
+
+When uploading a document:
+
+- Enter issue date.
+- Enter expiry date.
+- Automatically calculate one year later by default where appropriate.
+- Allow manual modification of expiry date.
+- Never assume every document has a one-year validity period if its actual legal validity differs.
+
+### Notification schedule
+
+Notify the manager:
+
+- 30 days before expiry.
+- 15 days before expiry.
+- 7 days before expiry.
+- On the expiry date.
+
+### Notification information
+
+Display:
+
+- Vehicle name.
+- Registration number.
+- Document type.
+- Expiry date.
+- Remaining days.
+
+### Status colors
+
+- Green: Valid.
+- Orange: Approaching expiry.
+- Red: Expired.
+
+Requirements:
+
+- Keep expired documents highlighted in red until renewal.
+- Avoid duplicate notifications for the same reminder period.
+- Record notification delivery status.
+- Notify the manager.
+- Display notifications inside the application.
+- Use Windows native notifications where supported.
+
+**CRITICAL:** Use a scheduled backend process that operates independently of the desktop application. Notifications must continue working even when TRANSCAR is closed.
+
+The monitoring process must use the central server's time zone and reliable scheduling.
+
+# 19. MAINTENANCE MANAGEMENT
+
+Create a maintenance section for every vehicle.
+
+Record:
+
+- Vehicle.
+- Maintenance type.
+- Maintenance date.
+- Current mileage.
+- Last maintenance mileage.
+- Next maintenance mileage.
+- Maintenance cost.
+- Notes.
+- Maintenance history.
+
+### Automatic mileage reminders
+
+| Maintenance | Interval |
+|---|---:|
+| Graissage | 10,000 km |
+| Bougies | 25,000 km |
+| Kit chaîne | 50,000 km |
+
+Requirements:
+
+- Automatically calculate next service mileage.
+- Show warnings when maintenance is approaching.
+- Show red alerts when overdue.
+- Notify the manager.
+- Preserve maintenance history.
+- Record actual maintenance costs.
+- Update the vehicle's current mileage.
+
+When a vehicle enters maintenance:
+
+- Automatically mark it unavailable.
+- Prevent reservations and rentals during maintenance.
+- Return it to availability only after maintenance is marked completed and no other booking or restriction exists.
+
+# 20. RENTAL MANAGEMENT
+
+Allow employees to:
+
+- Create rental contracts.
+- Select customers.
+- Select vehicles.
+- Choose rental dates.
+- Calculate rental duration.
+- Calculate total rental price.
+- Record payments.
+- Record deposits.
+- Record outstanding balances.
+- View active rentals.
+- View completed rentals.
+- View upcoming rentals.
+- Identify overdue returns.
+
+Automatically update vehicle availability.
+
+All rental operations must be recorded in the database.
+
+# 21. VEHICLE RETURNS
+
+Create a dedicated vehicle return section.
+
+Record:
+
+- Return date and time.
+- Return mileage.
+- Fuel level.
+- Vehicle condition.
+- Damage or scratches.
+- Additional charges.
+- Notes.
+
+Requirements:
+
+- Compare vehicle condition at departure and return.
+- Allow recording new damage.
+- Allow additional charges.
+- Calculate additional charges.
+- Record return information.
+- Preserve return history.
+
+After return, update vehicle availability only if there are no other reservations, active rentals or maintenance periods.
+
+### Late return calculation
+
+Apply the official rental conditions:
+
+- First 3 hours: grace period.
+- More than 3 hours and up to 6 hours: half-day additional rental.
+- More than 6 hours: full additional rental day.
+
+Calculate the applicable amount automatically according to the rental price and approved contract terms.
+
+Any extension requires prior agency approval.
+
+# 22. DISTANCE AND ADDITIONAL KILOMETERS
+
+Apply the official rental distance conditions.
+
+- Allowed distance: 350 km per 24 hours.
+- Additional kilometer price: 50 DZD.
+
+Automatically calculate:
+
+- Allowed distance based on rental duration.
+- Actual distance driven.
+- Additional kilometers.
+- Additional kilometer charges.
+
+Use departure mileage and return mileage.
+
+Display calculations clearly on the rental return screen and payment summary.
+
+# 23. CASH REGISTER – CAISSE
+
+Manager-only section.
+
+Include:
+
+- Cash balance.
+- Rental income.
+- Deposits.
+- Expenses.
+- Refunds.
+- Payment history.
+- Daily totals.
+- Monthly totals.
+
+Allow recording:
+
+- Cash payments.
+- Other payment methods.
+- Expenses.
+- Refunds.
+- Deposits.
+
+Automatically calculate:
+
+- Total income.
+- Total expenses.
+- Net balance.
+
+All financial transactions must be stored permanently.
+
+Employees must not access financial records through direct URLs or API calls.
+
+# 24. FINANCIAL REPORTS
+
+Manager-only access.
+
+Generate:
+
+- Daily reports.
+- Weekly reports.
+- Monthly reports.
+- Annual reports.
+- Vehicle rental performance.
+- Expense reports.
+- Revenue reports.
+- Profit reports.
+- Outstanding payments.
+
+Allow:
+
+- PDF export.
+- Excel export.
+- Printing.
+
+Reports must be calculated using real database information.
+
+Do not include fictional transactions.
+
+# 25. NOTIFICATION CENTER
+
+Create a persistent notification center.
+
+Display:
+
+- New reservations.
+- Upcoming returns.
+- Late returns.
+- Maintenance reminders.
+- Insurance expiry alerts.
+- Technical inspection expiry alerts.
+- Other vehicle document expiry alerts.
+- Important vehicle status changes.
+
+Requirements:
+
+- Normal notifications.
+- Warning notifications.
+- Urgent alerts.
+- Read/unread status.
+- Notification history.
+- Automatic updates.
+- Windows native notifications where supported.
+
+Manager receives administrative alerts.
+
+Employees receive operational alerts according to their permissions.
+
+# 26. DATABASE SYNCHRONIZATION AND MULTI-COMPUTER SUPPORT
+
+All computers must connect to one central database.
+
+The customer website must use the same backend and centralized data.
+
+Synchronize:
+
+- Vehicles.
+- Customers.
+- Reservations.
+- Rental contracts.
+- Vehicle documents.
+- Maintenance records.
+- Financial records.
+- Notifications.
+
+Requirements:
+
+- Persistent storage.
+- Secure file storage.
+- Automatic synchronization.
+- Database backups.
+- Offline connection warnings.
+- Safe synchronization after reconnecting.
+- Conflict detection.
+- Prevention of duplicate reservations.
+- Real-time or near-real-time updates.
+- Proper handling of simultaneous operations.
+
+Changes made on one computer must appear on other computers.
+
+Changes made on the customer website must appear in the administration application.
+
+Do not create separate production databases for individual computers.
+
+Never silently overwrite conflicting records.
+
+# 27. WINDOWS DESKTOP APPLICATION
+
+Build a genuine Electron Windows desktop application.
+
+It must include:
+
+- Custom TRANSCAR icon.
+- Desktop shortcut.
+- Start Menu shortcut.
+- Independent application window.
+- No Chrome browser interface.
+- Resizable window.
+- Native notifications.
+- File upload dialogs.
+- PDF viewing.
+- PDF printing.
+- File downloading.
+- Application update mechanism.
+- Proper application shutdown.
+
+Secure Electron architecture:
+
+- Context isolation enabled.
+- Node integration disabled in renderer.
+- Secure preload scripts.
+- Restricted IPC communication.
+- No exposed database credentials.
+- Validate all IPC operations.
+- Restrict access to local files.
+
+The application must work independently of the development environment.
+
+# 28. WINDOWS INSTALLER – TRANSCAR-SETUP.EXE
+
+Generate an actual Windows installer named:
+
+`TRANSCAR-Setup.exe`
+
+Use Electron Builder or an equivalent packaging tool.
+
+The installer must:
+
+- Support Windows 10.
+- Support Windows 11.
+- Install the complete application.
+- Include required production dependencies.
+- Not require Node.js.
+- Not require npm.
+- Not require VS Code.
+- Create a desktop shortcut.
+- Create a Start Menu shortcut.
+- Install the custom application icon.
+- Allow normal uninstalling.
+- Preserve central database records after uninstallation.
+
+Build scripts:
+
+`npm install`
+
+`npm run build`
+
+`npm run electron:build`
+
+Requirements:
+
+- Produce a genuine production build.
+- Include all required application assets.
+- Configure production environment variables safely.
+- Test installation.
+- Test application startup.
+- Test database connectivity.
+- Test login and permissions.
+- Test major business operations.
+- Test application shutdown and restart.
+
+Do not deliver only a development preview.
+
+# 29. BACKUP AND RECOVERY
+
+Implement reliable backup and recovery.
+
+Requirements:
+
+- Automatic scheduled database backups.
+- Secure backup storage.
+- Backup history.
+- Manual backup option for manager.
+- Database restoration.
+- File storage backup strategy.
+- Recovery instructions.
+- Protection against accidental deletion.
+- Protection against data loss during updates.
+
+Backups must include the information necessary to restore business operations and associated documents.
+
+# 30. SECURITY AND DATA PROTECTION
+
+Implement:
+
+- Secure authentication.
+- Role-based authorization.
+- Encrypted connections.
+- Secure document storage.
+- Server-side validation.
+- Secure password hashing.
+- Audit logs.
+- Protected administrative endpoints.
+- Session expiration.
+- Safe file upload validation.
+- Access restrictions for customer documents.
+- Database backups.
+
+Never expose customer driving licences or identification documents publicly.
+
+Do not place sensitive information in publicly accessible file paths.
+
+# 31. FINAL TESTING
+
+Test all important workflows.
+
+### Authentication
+- Manager login with initial password 2026.
+- Employee login with initial password 0000.
+- Employee financial restrictions.
+- Secure API authorization.
+
+### Database
+- Initial empty database.
+- All business counters start at zero.
+- Create and save real records.
+- Restart application.
+- Verify data persistence.
+- Verify central synchronization.
+
+### Vehicles
+- Vehicle creation.
+- Mandatory photographs.
+- Mandatory unique registration numbers.
+- Vehicle editing.
+- Vehicle document management.
+
+### Reservations
+- Date-based availability.
+- Reservation creation.
+- Prevention of overlapping reservations.
+- Prevention of double bookings.
+- Website synchronization.
+
+### Customers
+- Customer creation.
+- Driving licence uploads.
+- Document viewing.
+- Rental history.
+
+### Contracts
+- Official contract template.
+- Automatic customer information.
+- Automatic vehicle information.
+- Rental calculations.
+- PDF generation.
+- Printing.
+
+### Rental conditions
+- All ten official Arabic articles.
+- French translation.
+- English translation.
+- Customer acceptance.
+- Version history.
+- PDF export.
+
+### Document alerts
+- 30-day notifications.
+- 15-day notifications.
+- 7-day notifications.
+- Expiry-date notifications.
+- Expired document status.
+- Notifications while desktop application is closed.
+- Renewal handling.
+
+### Maintenance
+- 10,000 km Graissage reminders.
+- 25,000 km Bougies reminders.
+- 50,000 km Kit chaîne reminders.
+- Maintenance status restrictions.
+
+### Rental operations
+- Rental creation.
+- Payment recording.
+- Deposit recording.
+- Late return calculations.
+- Additional kilometer calculations.
+- Vehicle return.
+- Damage recording.
+
+### Financial management
+- Cash register.
+- Income.
+- Expenses.
+- Refunds.
+- Profits.
+- Financial reports.
+- PDF and Excel exports.
+
+### Languages
+- Arabic RTL.
+- French LTR.
+- English LTR.
+- Language persistence.
+- Correct translations.
+
+### Windows
+- Windows 10 installation.
+- Windows 11 installation.
+- Application startup.
+- Database connectivity.
+- Desktop shortcut.
+- Start Menu shortcut.
+- Uninstallation.
+- Data preservation.
+
+Do not declare any workflow successful unless it has actually been tested.
+
+# 32. FINAL DELIVERY REQUIREMENTS
+
+Deliver:
+
+1. Complete TRANSCAR source code.
+2. Complete Windows desktop application.
+3. `TRANSCAR-Setup.exe`.
+4. Custom application icon.
+5. Complete database schema.
+6. Database configuration.
+7. Database migrations.
+8. Backend source code.
+9. Customer booking website.
+10. Rental contract integration.
+11. Official rental conditions integration.
+12. Secure file storage configuration.
+13. Installation instructions.
+14. Update instructions.
+15. Backup and recovery instructions.
+16. Technical documentation.
+17. Production deployment instructions.
+
+# 33. STRICT DEVELOPMENT RULES
+
+These requirements are mandatory.
+
+1. Do not deliver only a website.
+2. Do not deliver a browser shortcut.
+3. Do not deliver only a PWA.
+4. Do not deliver only a development preview.
+5. Do not use fake data.
+6. Do not initialize fictional business records.
+7. Do not remove requested features.
+8. Do not redesign supplied interfaces without permission.
+9. Do not invent or replace the official rental contract.
+10. Do not remove any official rental condition.
+11. Do not use a local-only database as the production solution.
+12. Do not use frontend-only permissions.
+13. Do not leave nonfunctional buttons.
+14. Do not simulate database operations.
+15. Do not claim notifications work if they have not been implemented.
+16. Do not claim synchronization works without testing it.
+17. Do not claim installation is successful without testing the installer.
+
+If a feature depends on a missing document, credential or external service, clearly identify the missing requirement and prepare the integration without inventing the missing information.
+
+If an existing implementation already works, preserve it.
+
+# 34. DEFINITION OF PROJECT COMPLETION
+
+TRANSCAR is considered complete only when:
+
+- The complete database has been created and deployed.
+- All business records start empty.
+- All supplied interfaces are implemented.
+- All major application functions work.
+- The official rental conditions are integrated.
+- The official contract template is integrated.
+- Arabic, French and English work correctly.
+- The customer booking website is operational.
+- All computers synchronize with the central database.
+- Document expiry notifications work independently of the desktop application.
+- Financial operations are protected.
+- Data persists after restarting Windows.
+- Backups and recovery work.
+- The actual Windows installer has been generated.
+- The installer has been tested successfully.
+- The installed application launches and connects to the production backend.
+
+**FINAL OBJECTIVE:**
+
+Deliver a complete, professional, secure and fully operational TRANSCAR car rental management system.
+
+The result must be a real Windows desktop application ready to install and use in the agency, connected to a centralized database and customer booking website, with all requested business operations functioning correctly.
+
+Do not stop at interface development. Complete the backend, database, integrations, testing, production build and actual Windows installation.

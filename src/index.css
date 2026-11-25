@@ -1,0 +1,842 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-black: #111114;
+  --color-on-brand-black: #FFFFFF;
+  --color-success: #15803D;
+  --color-on-success: #FFFFFF;
+  --color-success-container: #DCFCE7;
+  --color-on-success-container: #14532D;
+  --color-warning: #B45309;
+  --color-on-warning: #FFFFFF;
+  --color-warning-container: #FEF3C7;
+  --color-on-warning-container: #78350F;
+  --color-light-primary: #93000B;
+  --color-light-on-primary: #FFFFFF;
+  --color-light-primary-container: #B91C1C;
+  --color-light-on-primary-container: #FFCDC7;
+  --color-light-secondary: #9F3F37;
+  --color-light-on-secondary: #FFFFFF;
+  --color-light-tertiary: #00497F;
+  --color-light-on-tertiary: #FFFFFF;
+  --color-light-error: #BA1A1A;
+  --color-light-on-error: #FFFFFF;
+  --color-light-error-container: #FFDAD6;
+  --color-light-on-error-container: #93000A;
+  --color-light-background: #FBF8FC;
+  --color-light-on-background: #1B1B1E;
+  --color-light-surface: #FBF8FC;
+  --color-light-surface-dim: #DCD9DD;
+  --color-light-surface-bright: #FFFFFF;
+  --color-light-surface-container-lowest: #FFFFFF;
+  --color-light-surface-container-low: #F6F2F7;
+  --color-light-surface-container: #F0EDF1;
+  --color-light-surface-container-high: #EAE7EB;
+  --color-light-surface-container-highest: #E4E1E6;
+  --color-light-on-surface: #1B1B1E;
+  --color-light-surface-variant: #FFDAD6;
+  --color-light-on-surface-variant: #5B403D;
+  --color-light-outline: #8F6F6C;
+  --color-light-outline-variant: #E4BEB9;
+  --color-light-inverse-surface: #303033;
+  --color-light-inverse-on-surface: #F3F0F4;
+  --color-light-inverse-primary: #FFB4AB;
+
+  --font-display: "Wix Madefor Display", "Cairo", sans-serif;
+  --font-headline: "Wix Madefor Display", "Cairo", sans-serif;
+  --font-title: "Instrument Sans", "Cairo", sans-serif;
+  --font-body: "Instrument Sans", "Cairo", sans-serif;
+  --font-label: "Instrument Sans", "Cairo", sans-serif;
+  --font-mono: "Source Code Pro", monospace;
+}
+
+.material-symbols-outlined {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1 !important;
+  box-sizing: content-box;
+  overflow: hidden;
+  white-space: nowrap;
+  direction: ltr;
+  vertical-align: middle;
+}
+
+[dir="rtl"] body,
+html[dir="rtl"] {
+  font-family: "Cairo", "Instrument Sans", sans-serif;
+}
+
+@page {
+  size: A4 portrait;
+  margin: 5mm;
+}
+
+/* Shared CSS variables & density tiers for Contract (200mm x 287mm printable inside 210mm x 297mm A4) */
+.print-contract-sheet {
+  --c-hdr-py: 7px;
+  --c-agency-font: 10px;
+  --c-logo-size: 24px;
+  --c-logo-sub: 12.5px;
+  --c-bar-py: 5px;
+  --c-title-size: 15px;
+  --c-col-gap: 9px;
+  --c-body-pad: 8px;
+  --c-card-gap: 7px;
+  --c-card-hdr-py: 4px;
+  --c-card-hdr-font: 11.5px;
+  --c-font: 10.5px;
+  --c-lh: 1.3;
+  --c-card-py: 6px;
+  --c-row-gap: 3.5px;
+  --c-diagram-w: 225px;
+  --c-diagram-h: 95px;
+  --c-fuel-w: 84px;
+  --c-fuel-h: 42px;
+  --c-sig-date-gap: 24px;
+  --c-sig-h: 68px;
+  --c-btm-py: 6px;
+}
+
+.print-contract-sheet[data-print-density="compact"] {
+  --c-hdr-py: 5px;
+  --c-agency-font: 9.4px;
+  --c-logo-size: 21px;
+  --c-logo-sub: 11.5px;
+  --c-bar-py: 4px;
+  --c-title-size: 14px;
+  --c-col-gap: 7px;
+  --c-body-pad: 6px;
+  --c-card-gap: 5px;
+  --c-card-hdr-py: 3px;
+  --c-card-hdr-font: 10.8px;
+  --c-font: 9.8px;
+  --c-lh: 1.24;
+  --c-card-py: 4.5px;
+  --c-row-gap: 2.5px;
+  --c-diagram-w: 195px;
+  --c-diagram-h: 82px;
+  --c-fuel-w: 76px;
+  --c-fuel-h: 38px;
+  --c-sig-date-gap: 20px;
+  --c-sig-h: 56px;
+  --c-btm-py: 4px;
+}
+
+.print-contract-sheet[data-print-density="dense"] {
+  --c-hdr-py: 4px;
+  --c-agency-font: 8.8px;
+  --c-logo-size: 19px;
+  --c-logo-sub: 10.5px;
+  --c-bar-py: 3px;
+  --c-title-size: 13px;
+  --c-col-gap: 6px;
+  --c-body-pad: 5px;
+  --c-card-gap: 4px;
+  --c-card-hdr-py: 2.5px;
+  --c-card-hdr-font: 10px;
+  --c-font: 9px;
+  --c-lh: 1.18;
+  --c-card-py: 3.5px;
+  --c-row-gap: 2px;
+  --c-diagram-w: 175px;
+  --c-diagram-h: 72px;
+  --c-fuel-w: 68px;
+  --c-fuel-h: 34px;
+  --c-sig-date-gap: 16px;
+  --c-sig-h: 46px;
+  --c-btm-py: 3.5px;
+}
+
+.print-contract-sheet[data-print-density="ultra"] {
+  --c-hdr-py: 3px;
+  --c-agency-font: 8.2px;
+  --c-logo-size: 17px;
+  --c-logo-sub: 9.8px;
+  --c-bar-py: 2.5px;
+  --c-title-size: 12px;
+  --c-col-gap: 5px;
+  --c-body-pad: 4px;
+  --c-card-gap: 3px;
+  --c-card-hdr-py: 2px;
+  --c-card-hdr-font: 9.3px;
+  --c-font: 8.3px;
+  --c-lh: 1.14;
+  --c-card-py: 2.5px;
+  --c-row-gap: 1.5px;
+  --c-diagram-w: 155px;
+  --c-diagram-h: 62px;
+  --c-fuel-w: 60px;
+  --c-fuel-h: 30px;
+  --c-sig-date-gap: 12px;
+  --c-sig-h: 38px;
+  --c-btm-py: 3px;
+}
+
+/* Shared CSS variables & density tiers for Rental Terms (200mm x 287mm printable inside 210mm x 297mm A4) */
+.print-conditions-sheet {
+  --cond-pad: 5.5mm;
+  --cond-hdr-pb: 5px;
+  --cond-title: 15px;
+  --cond-intro: 9.5px;
+  --cond-col-gap: 9px;
+  --cond-card-gap: 6px;
+  --cond-card-pad: 6px 8px;
+  --cond-art-title: 10.5px;
+  --cond-font: 9.6px;
+  --cond-lh: 1.32;
+  --cond-eq-pad: 6px 9px;
+  --cond-eq-title: 10.5px;
+  --cond-eq-font: 9.4px;
+  --cond-sig-pad: 5px 8px;
+  --cond-sig-title: 10px;
+  --cond-sig-note: 9.2px;
+  --cond-sig-h: 54px;
+}
+
+.print-conditions-sheet[data-print-density="spacious"] {
+  --cond-pad: 6.5mm;
+  --cond-hdr-pb: 6px;
+  --cond-title: 16px;
+  --cond-intro: 10px;
+  --cond-col-gap: 10px;
+  --cond-card-gap: 7px;
+  --cond-card-pad: 7px 9px;
+  --cond-art-title: 11.2px;
+  --cond-font: 10.2px;
+  --cond-lh: 1.38;
+  --cond-eq-pad: 7px 10px;
+  --cond-eq-title: 11px;
+  --cond-eq-font: 9.8px;
+  --cond-sig-pad: 6px 9px;
+  --cond-sig-title: 10.8px;
+  --cond-sig-note: 9.8px;
+  --cond-sig-h: 64px;
+}
+
+.print-conditions-sheet[data-print-density="compact"] {
+  --cond-pad: 4.5mm;
+  --cond-hdr-pb: 4px;
+  --cond-title: 14px;
+  --cond-intro: 9px;
+  --cond-col-gap: 8px;
+  --cond-card-gap: 4.5px;
+  --cond-card-pad: 5px 7px;
+  --cond-art-title: 9.8px;
+  --cond-font: 8.9px;
+  --cond-lh: 1.26;
+  --cond-eq-pad: 5px 8px;
+  --cond-eq-title: 9.8px;
+  --cond-eq-font: 8.8px;
+  --cond-sig-pad: 4.5px 7px;
+  --cond-sig-title: 9.4px;
+  --cond-sig-note: 8.6px;
+  --cond-sig-h: 46px;
+}
+
+.print-conditions-sheet[data-print-density="dense"] {
+  --cond-pad: 4mm;
+  --cond-hdr-pb: 3.5px;
+  --cond-title: 13px;
+  --cond-intro: 8.5px;
+  --cond-col-gap: 6.5px;
+  --cond-card-gap: 4px;
+  --cond-card-pad: 4px 6.5px;
+  --cond-art-title: 9.2px;
+  --cond-font: 8.3px;
+  --cond-lh: 1.2;
+  --cond-eq-pad: 4.5px 7px;
+  --cond-eq-title: 9.2px;
+  --cond-eq-font: 8.3px;
+  --cond-sig-pad: 4px 6.5px;
+  --cond-sig-title: 8.8px;
+  --cond-sig-note: 8.1px;
+  --cond-sig-h: 38px;
+}
+
+.print-conditions-sheet[data-print-density="ultra"] {
+  --cond-pad: 3.5mm;
+  --cond-hdr-pb: 3px;
+  --cond-title: 12px;
+  --cond-intro: 8px;
+  --cond-col-gap: 5.5px;
+  --cond-card-gap: 3px;
+  --cond-card-pad: 3px 5.5px;
+  --cond-art-title: 8.5px;
+  --cond-font: 7.5px;
+  --cond-lh: 1.13;
+  --cond-eq-pad: 3.5px 6px;
+  --cond-eq-title: 8.5px;
+  --cond-eq-font: 7.7px;
+  --cond-sig-pad: 3.5px 6px;
+  --cond-sig-title: 8.2px;
+  --cond-sig-note: 7.6px;
+  --cond-sig-h: 32px;
+}
+
+/* Synchronous pre-print layout measurement container (exact 200mm printable A4 width, auto height) */
+.print-measure-a4,
+.print-measure-a4 * {
+  box-sizing: border-box !important;
+}
+
+.print-measure-a4 {
+  width: 200mm !important;
+  max-width: 200mm !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  box-shadow: none !important;
+}
+
+.print-contract-sheet.print-measure-a4 .contract-top-header {
+  padding: var(--c-hdr-py) 12px !important;
+  gap: 8px !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-agency-lines {
+  font-size: var(--c-agency-font) !important;
+  line-height: 1.25 !important;
+  gap: 2px !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-logo-brand {
+  font-size: var(--c-logo-size) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-logo-sub {
+  font-size: var(--c-logo-sub) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-title-bar {
+  padding: var(--c-bar-py) 12px !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-title-badge {
+  font-size: var(--c-title-size) !important;
+  padding: 3px 14px !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-number-box {
+  padding: 3px 10px !important;
+  font-size: 11px !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-qr-badge {
+  padding: 2px 5px !important;
+  gap: 4px !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-qr-svg {
+  width: 30px !important;
+  height: 30px !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-qr-caption {
+  font-size: 7.5px !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-columns {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: var(--c-col-gap) !important;
+  padding: var(--c-body-pad) 10px !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-col-stack {
+  gap: var(--c-card-gap) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-card-header {
+  padding: var(--c-card-hdr-py) 8px !important;
+  font-size: var(--c-card-hdr-font) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-card-body {
+  padding: var(--c-card-py) 8px !important;
+  gap: var(--c-row-gap) !important;
+  font-size: var(--c-font) !important;
+  line-height: var(--c-lh) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-card-body :not(svg):not(svg *) {
+  font-size: var(--c-font) !important;
+  line-height: var(--c-lh) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-row {
+  padding-bottom: 2px !important;
+  gap: 6px !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-diagram-svg {
+  max-width: var(--c-diagram-w) !important;
+  max-height: var(--c-diagram-h) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-fuel-svg {
+  width: var(--c-fuel-w) !important;
+  height: var(--c-fuel-h) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-fuel-sig-group {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2.5mm !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-sig-box {
+  padding: var(--c-card-py) 8px !important;
+  font-size: var(--c-font) !important;
+  line-height: var(--c-lh) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-sig-box .mb-3 {
+  margin-bottom: var(--c-row-gap) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-sig-date-space {
+  height: var(--c-sig-date-gap) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-sig-space {
+  height: var(--c-sig-h) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-sig-agency-space {
+  min-height: calc(var(--c-sig-h) + var(--c-sig-date-gap)) !important;
+}
+.print-contract-sheet.print-measure-a4 .contract-bottom-banner {
+  padding: var(--c-btm-py) 8px !important;
+  font-size: 13px !important;
+}
+
+.print-conditions-sheet.print-measure-a4 {
+  padding: var(--cond-pad) !important;
+  gap: var(--cond-card-gap) !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-header {
+  padding-bottom: var(--cond-hdr-pb) !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-title {
+  font-size: var(--cond-title) !important;
+  line-height: 1.2 !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-intro {
+  font-size: var(--cond-intro) !important;
+  line-height: 1.28 !important;
+  margin-top: 2px !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-articles-grid {
+  display: block !important;
+  column-count: 2 !important;
+  column-gap: var(--cond-col-gap) !important;
+  column-fill: balance !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-article-card {
+  display: inline-block !important;
+  width: 100% !important;
+  padding: var(--cond-card-pad) !important;
+  margin-bottom: var(--cond-card-gap) !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-article-editor {
+  display: none !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-article-print {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-article-title {
+  font-size: var(--cond-art-title) !important;
+  line-height: 1.22 !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-article-body {
+  font-size: var(--cond-font) !important;
+  line-height: var(--cond-lh) !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-equipment-section {
+  margin-top: 2px !important;
+  padding: var(--cond-eq-pad) !important;
+  gap: 4px !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-equipment-title {
+  font-size: var(--cond-eq-title) !important;
+  line-height: 1.2 !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-equipment-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 4px !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-equipment-item {
+  padding: 2.5px 6px !important;
+  gap: 5px !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-equipment-item span:last-child {
+  font-size: var(--cond-eq-font) !important;
+  line-height: 1.2 !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-equipment-box {
+  width: 11px !important;
+  height: 11px !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-equipment-warning {
+  font-size: var(--cond-eq-font) !important;
+  line-height: 1.25 !important;
+  padding-top: 3px !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-signatures-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: var(--cond-col-gap) !important;
+  margin-top: 2px !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-signature-box {
+  padding: var(--cond-sig-pad) !important;
+  gap: 2px !important;
+  border: 1px solid #334155 !important;
+  border-radius: 5px !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-signature-title {
+  font-size: var(--cond-sig-title) !important;
+  line-height: 1.2 !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-signature-note {
+  font-size: var(--cond-sig-note) !important;
+  line-height: 1.2 !important;
+}
+.print-conditions-sheet.print-measure-a4 .conditions-sig-space {
+  height: var(--cond-sig-h) !important;
+  min-height: var(--cond-sig-h) !important;
+  margin-top: 2px !important;
+  background: #ffffff !important;
+  border: none !important;
+}
+
+@media print {
+  html,
+  body,
+  #root {
+    width: 200mm !important;
+    max-width: 200mm !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    box-sizing: border-box !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .app-print-shell,
+  .app-print-main {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .print-grid-reset {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .print-grid-reset > * {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  .print-only-sheet {
+    width: 200mm !important;
+    max-width: 200mm !important;
+    height: 285mm !important;
+    max-height: 285mm !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+
+  /* Rental Contract — Exact Single A4 Page Fill */
+  .print-contract-sheet {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+  }
+
+  .print-contract-sheet .contract-top-header {
+    flex-shrink: 0 !important;
+    padding: var(--c-hdr-py) 12px !important;
+    gap: 8px !important;
+  }
+
+  .print-contract-sheet .contract-agency-lines {
+    font-size: var(--c-agency-font) !important;
+    line-height: 1.25 !important;
+    gap: 2px !important;
+  }
+
+  .print-contract-sheet .contract-logo-brand {
+    font-size: var(--c-logo-size) !important;
+  }
+
+  .print-contract-sheet .contract-logo-sub {
+    font-size: var(--c-logo-sub) !important;
+  }
+
+  .print-contract-sheet .contract-title-bar {
+    flex-shrink: 0 !important;
+    padding: var(--c-bar-py) 12px !important;
+  }
+
+  .print-contract-sheet .contract-title-badge {
+    font-size: var(--c-title-size) !important;
+    padding: 3px 14px !important;
+  }
+
+  .print-contract-sheet .contract-number-box {
+    padding: 3px 10px !important;
+    font-size: 11px !important;
+  }
+
+  .print-contract-sheet .contract-qr-badge {
+    padding: 2px 5px !important;
+    gap: 4px !important;
+  }
+
+  .print-contract-sheet .contract-qr-svg {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .print-contract-sheet .contract-qr-caption {
+    font-size: 7.5px !important;
+  }
+
+  .print-contract-sheet .contract-columns {
+    flex: 1 1 auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    gap: var(--c-col-gap) !important;
+    padding: var(--c-body-pad) 10px !important;
+  }
+
+  .print-contract-sheet .contract-col-stack {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    gap: var(--c-card-gap) !important;
+    height: 100% !important;
+  }
+
+  .print-contract-sheet .contract-card {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-contract-sheet .contract-card-header {
+    padding: var(--c-card-hdr-py) 8px !important;
+    font-size: var(--c-card-hdr-font) !important;
+  }
+
+  .print-contract-sheet .contract-card-body {
+    padding: var(--c-card-py) 8px !important;
+    gap: var(--c-row-gap) !important;
+    font-size: var(--c-font) !important;
+    line-height: var(--c-lh) !important;
+  }
+
+  .print-contract-sheet .contract-card-body :not(svg):not(svg *) {
+    font-size: var(--c-font) !important;
+    line-height: var(--c-lh) !important;
+  }
+
+  .print-contract-sheet .contract-row {
+    padding-bottom: 2px !important;
+    gap: 6px !important;
+  }
+
+  .print-contract-sheet .contract-diagram-svg {
+    max-width: var(--c-diagram-w) !important;
+    max-height: var(--c-diagram-h) !important;
+  }
+
+  .print-contract-sheet .contract-fuel-svg {
+    width: var(--c-fuel-w) !important;
+    height: var(--c-fuel-h) !important;
+  }
+
+  .print-contract-sheet .contract-fuel-sig-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2.5mm !important;
+    flex-shrink: 0 !important;
+  }
+
+  .print-contract-sheet .contract-sig-box {
+    padding: var(--c-card-py) 8px !important;
+    font-size: var(--c-font) !important;
+    line-height: var(--c-lh) !important;
+  }
+
+  .print-contract-sheet .contract-sig-box .mb-3 {
+    margin-bottom: var(--c-row-gap) !important;
+  }
+
+  .print-contract-sheet .contract-sig-date-space {
+    height: var(--c-sig-date-gap) !important;
+  }
+
+  .print-contract-sheet .contract-sig-space {
+    height: var(--c-sig-h) !important;
+  }
+
+  .print-contract-sheet .contract-sig-agency-space {
+    min-height: calc(var(--c-sig-h) + var(--c-sig-date-gap)) !important;
+  }
+
+  .print-contract-sheet .contract-bottom-banner {
+    flex-shrink: 0 !important;
+    padding: var(--c-btm-py) 8px !important;
+    font-size: 13px !important;
+  }
+
+  /* Rental Terms (Conditions de location) — Separate Exact Single A4 Page */
+  .print-conditions-sheet {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    padding: var(--cond-pad) !important;
+    gap: var(--cond-card-gap) !important;
+    border: 1.5px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+  }
+
+  .print-conditions-sheet .conditions-header {
+    flex-shrink: 0 !important;
+    padding-bottom: var(--cond-hdr-pb) !important;
+  }
+
+  .print-conditions-sheet .conditions-title {
+    font-size: var(--cond-title) !important;
+    line-height: 1.2 !important;
+  }
+
+  .print-conditions-sheet .conditions-intro {
+    font-size: var(--cond-intro) !important;
+    line-height: 1.28 !important;
+    margin-top: 2px !important;
+  }
+
+  .print-conditions-sheet .conditions-articles-grid {
+    flex: 1 1 auto !important;
+    display: block !important;
+    column-count: 2 !important;
+    column-gap: var(--cond-col-gap) !important;
+    column-fill: balance !important;
+  }
+
+  .print-conditions-sheet .conditions-article-card {
+    display: inline-block !important;
+    width: 100% !important;
+    padding: var(--cond-card-pad) !important;
+    margin-bottom: var(--cond-card-gap) !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-conditions-sheet .conditions-article-editor {
+    display: none !important;
+  }
+
+  .print-conditions-sheet .conditions-article-print {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2px !important;
+  }
+
+  .print-conditions-sheet .conditions-article-title {
+    font-size: var(--cond-art-title) !important;
+    line-height: 1.22 !important;
+  }
+
+  .print-conditions-sheet .conditions-article-body {
+    font-size: var(--cond-font) !important;
+    line-height: var(--cond-lh) !important;
+  }
+
+  .print-conditions-sheet .conditions-equipment-section {
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
+    padding: var(--cond-eq-pad) !important;
+    gap: 4px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-conditions-sheet .conditions-equipment-title {
+    font-size: var(--cond-eq-title) !important;
+    line-height: 1.2 !important;
+  }
+
+  .print-conditions-sheet .conditions-equipment-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 4px !important;
+  }
+
+  .print-conditions-sheet .conditions-equipment-item {
+    padding: 2.5px 6px !important;
+    gap: 5px !important;
+  }
+
+  .print-conditions-sheet .conditions-equipment-item span:last-child {
+    font-size: var(--cond-eq-font) !important;
+    line-height: 1.2 !important;
+  }
+
+  .print-conditions-sheet .conditions-equipment-box {
+    width: 11px !important;
+    height: 11px !important;
+  }
+
+  .print-conditions-sheet .conditions-equipment-warning {
+    font-size: var(--cond-eq-font) !important;
+    line-height: 1.25 !important;
+    padding-top: 3px !important;
+  }
+
+  .print-conditions-sheet .conditions-signatures-grid {
+    flex-shrink: 0 !important;
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: var(--cond-col-gap) !important;
+    margin-top: 2px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-conditions-sheet .conditions-signature-box {
+    padding: var(--cond-sig-pad) !important;
+    gap: 2px !important;
+    border: 1px solid #334155 !important;
+    border-radius: 5px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .print-conditions-sheet .conditions-signature-title {
+    font-size: var(--cond-sig-title) !important;
+    line-height: 1.2 !important;
+  }
+
+  .print-conditions-sheet .conditions-signature-note {
+    font-size: var(--cond-sig-note) !important;
+    line-height: 1.2 !important;
+  }
+
+  .print-conditions-sheet .conditions-sig-space {
+    height: var(--cond-sig-h) !important;
+    min-height: var(--cond-sig-h) !important;
+    margin-top: 2px !important;
+    background: #ffffff !important;
+    border: none !important;
+  }
+}

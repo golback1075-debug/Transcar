@@ -1,0 +1,25 @@
+{
+  "version": "1.0.7",
+  "buildDate": "2026-11-25T14:40:00.000Z",
+  "minSupportedVersion": "1.0.0",
+  "releaseNotes": {
+    "fr": [
+      "Nouveau diagramme technique d'inspection véhicule 62 zones interactif (rayures, bosses, défauts au départ et au retour)",
+      "Mise à jour des coordonnées de l'agence (Tél: 0560 97 05 36 avec accès WhatsApp et Viber, retrait NIS/Article, RC 4038527A04)",
+      "Connexion locale épurée et sécurisée (Gérant / Employé avec mot de passe et déverrouillage 100% hors ligne)",
+      "PWA Windows tout-en-un avec installation en 1 clic, synchronisation automatique et lancement hors ligne instantané sans erreur réseau"
+    ],
+    "ar": [
+      "مخطط تقني تفاعلي لمعاينة السيارة بـ 62 منطقة (خدوش، صدمات، وأعطال عند الانطلاق والإرجاع)",
+      "تحديث معلومات وكالة ترانسكار (الهاتف: 0560 97 05 36 مع روابط واتساب وفايبر، حذف NIS/Article، السجل التجاري 4038527A04)",
+      "تسجيل دخول محلي آمن ومحمي بدون حسابات خارجية مع وصول كامل بدون إنترنت",
+      "تطبيق PWA لنظام ويندوز مع تثبيت بنقرة واحدة، مزامنة تلقائية وتشغيل فوري في وضع عدم الاتصال"
+    ],
+    "en": [
+      "Interactive 62-zone vehicle technical inspection diagram (scratches, dents, and defects for departure and return)",
+      "Updated agency contact details (Tel: 0560 97 05 36 with WhatsApp & Viber direct links, NIS/Article removed, CR 4038527A04)",
+      "Secure local login (Manager & Employee with offline unlock support)",
+      "Windows PWA with 1-click install, automatic sync, and instant offline launch without network errors"
+    ]
+  }
+}
